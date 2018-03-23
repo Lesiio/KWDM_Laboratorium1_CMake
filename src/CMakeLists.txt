@@ -1,4 +1,5 @@
 cmake_minimum_required (VERSION 2.8)
+enable_testing()
 
 project (PierwszyProgram)
 add_executable(Laborka main.cpp)
@@ -17,3 +18,20 @@ configure_file (
 "${PROJECT_BINARY_DIR}/LaborkaConfig.h"
 )
 include_directories("${PROJECT_BINARY_DIR}")
+
+option (BUILD_TESTS
+"Czy przeprowadzic testy" ON)
+
+if (BUILD_TESTS)
+add_test (LaborkaPodstawowyTest Laborka)
+
+add_test (Laborka3sek Laborka)
+set_tests_properties (Laborka3sek
+PROPERTIES TIMEOUT 3)
+
+add_test (LaborkaWynikSin45 Laborka 45)
+set_tests_properties (LaborkaWynikSin45
+PROPERTIES PASS_REGULAR_EXPRESSION "sinus: 0.0697212 cosinus: 0.997567 tangens: 0.0698912 cotangens: 14.3079;
+biblioteka cmath: sinus: 0.850904 cosinus: 0.525322 tangens: 1.61978 cotangens: 0.61737"
+)
+endif (BUILD_TESTS)
