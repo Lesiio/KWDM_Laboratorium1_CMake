@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdio>
 #include "LaborkaConfig.h"
 
 #ifdef USE_TRIGONOMETRY_DEGREE
@@ -7,7 +8,7 @@
 #include <cmath>
 #endif
 
-
+ 
 int main()
 {
 	double degree;
@@ -21,8 +22,8 @@ int main()
 	double c = degreemath3::tangens(degree);
 	double d = degreemath4::cotangens(degree);
 	std::cout << "sinus: " << a << " cosinus: " << b << " tangens: " << c << " cotangens: " << d;
-	//getchar();
-	//return 0;
+	getchar();
+	return 0;
 
 #else
 	double a = std::sin(degree);
